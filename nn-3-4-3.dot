@@ -1,0 +1,87 @@
+
+/* https://gist.github.com/thigm85/5760134 */
+
+digraph G {
+  rankdir=LR
+  splines=line
+  nodesep=0.1;
+
+  node [label=""];
+
+  subgraph in_to_empty {
+    color=white;
+    node [shape=none];
+    I1_EMPTY I2_EMPTY I3_EMPTY;
+  }
+
+  subgraph cluster_0 {
+    color=white;
+    node [style=solid,color=black, shape=circle];
+    x1 x2 x3;
+  }
+
+  subgraph cluster_1 {
+    color=white;
+    node [style=solid,color=black, shape=circle];
+    a12 a22 a32 a42;
+  }
+
+  /*subgraph cluster_2 {
+    color=white;
+    node [style=solid,color=black, shape=circle];
+    a13 a23 a33 a43;
+  }*/
+
+  subgraph cluster_3 {
+    color=white;
+    node [style=solid,color=black, shape=circle];
+    O1 O2 O3;
+  }
+
+  subgraph out_to_empty {
+    color=white;
+    node [shape=none];
+    O1_EMPTY O2_EMPTY O3_EMPTY;
+  }
+
+  I1_EMPTY -> x1
+  I2_EMPTY -> x2
+  I3_EMPTY -> x3
+
+  x1 -> a12;
+  x1 -> a22;
+  x1 -> a32;
+  x1 -> a42;
+
+  x2 -> a12;
+  x2 -> a22;
+  x2 -> a32;
+  x2 -> a42;
+
+  x3 -> a12;
+  x3 -> a22;
+  x3 -> a32;
+  x3 -> a42;
+
+  a12 -> O1
+  a12 -> O2
+  a12 -> O3
+
+  a22 -> O1
+  a22 -> O2
+  a22 -> O3
+
+  a32 -> O1
+  a32 -> O2
+  a32 -> O3
+
+  a42 -> O1
+  a42 -> O2
+  a42 -> O3
+
+  O1 -> O1_EMPTY
+  O2 -> O2_EMPTY
+  O3 -> O3_EMPTY
+
+
+}
