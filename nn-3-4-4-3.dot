@@ -8,6 +8,12 @@ digraph G {
 
   node [label=""];
 
+  subgraph in_to_empty {
+    color=white;
+    node [shape=none];
+    I1_EMPTY I2_EMPTY I3_EMPTY;
+  }
+
   subgraph cluster_0 {
     color=white;
     node [style=solid,color=black, shape=circle];
@@ -31,6 +37,16 @@ digraph G {
     node [style=solid,color=black, shape=circle];
     O1 O2 O3;
   }
+
+  subgraph out_to_empty {
+    color=white;
+    node [shape=none];
+    O1_EMPTY O2_EMPTY O3_EMPTY;
+  }
+
+  I1_EMPTY -> x1
+  I2_EMPTY -> x2
+  I3_EMPTY -> x3
 
   x1 -> a12;
   x1 -> a22;
@@ -81,5 +97,10 @@ digraph G {
   a23 -> O3
   a33 -> O3
   a43 -> O3
+
+  O1 -> O1_EMPTY
+  O2 -> O2_EMPTY
+  O3 -> O3_EMPTY
+
 
 }
