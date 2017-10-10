@@ -26,16 +26,17 @@ digraph G {
     a12 a22 a32 a42;
   }
 
+
   subgraph cluster_3 {
     color=white;
     node [style=solid,color=black, shape=circle];
-    O1 O2 O3;
+    O1 O2;
   }
 
   subgraph out_to_empty {
     color=white;
     node [shape=none];
-    O1_EMPTY O2_EMPTY O3_EMPTY;
+    O1_EMPTY O2_EMPTY;
   }
 
   I1_EMPTY -> x1
@@ -59,23 +60,17 @@ digraph G {
 
   a12 -> O1
   a12 -> O2
-  a12 -> O3
 
   a22 -> O1
   a22 -> O2
-  a22 -> O3
 
   a32 -> O1
   a32 -> O2
-  a32 -> O3
 
   a42 -> O1
   a42 -> O2
-  a42 -> O3
 
   O1 -> O1_EMPTY
   O2 -> O2_EMPTY
-  O3 -> O3_EMPTY
-
 
 }
