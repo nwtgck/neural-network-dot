@@ -1,0 +1,119 @@
+
+/* https://gist.github.com/thigm85/5760134 */
+
+digraph G {  
+  rankdir=LR
+  splines=line
+  nodesep=0.1;
+
+  /*node [label=""];*/
+
+  
+  subgraph in_to_empty {
+    color=white;
+    node [shape=none];
+    I1_EMPTY I2_EMPTY IN_EMPTY;
+    {rank=same;I1_EMPTY;I2_EMPTY;IN_EMPTY}
+  }
+
+  I1_EMPTY [
+    label="Feature0"
+  ]
+
+  I2_EMPTY [
+    label="Feature1"
+  ]
+
+  IN_EMPTY [
+    label="FeatureN"
+  ]
+
+
+  subgraph cluster_0 {
+    color=white;
+    node [style=solid,color=black, shape=circle, label=""];
+    label="15 Inputs"
+    x1 x2 xdot x3;
+    {rank=same;x1;x2;xdot;x3}
+  }
+
+  xdot [
+    shape=none;
+    label=".\n.\n.\n";
+  ]
+
+  subgraph cluster_1 {
+    color=white;
+    node [style=solid,color=black, shape=circle,label=""];
+    label="Hidden Layer"
+    a12 a22 adot a42;
+  }
+
+  adot [
+    shape=none
+    label=".\n.\n.\n"
+  ]
+
+  subgraph cluster_3 {
+    color=white;
+    node [style=solid,color=black, shape=circle,label=""];
+    label="2 nuerons"    
+    O1 O2;
+    {rank=same;O1;O2;}
+  }
+
+  subgraph out_to_empty {
+    color=white;
+    node [shape=none];
+    ordering=out ;
+    {rank=same;O1_EMPTY;O2_EMPTY;}
+    O1_EMPTY[]
+    O2_EMPTY[]
+    O1_EMPTY O2_EMPTY;
+
+  }
+
+  O1_EMPTY [
+    label="Output0"
+  ]
+
+  O2_EMPTY [
+    label="Output1"
+  ]
+
+  I1_EMPTY -> x1
+  I2_EMPTY -> x2
+  IN_EMPTY -> x3
+
+  x1 -> a12;
+  x1 -> a22;
+  x1 -> adot;  
+  x1 -> a42;
+
+  x2 -> a12;
+  x2 -> a22;
+  x2 -> adot;  
+  x2 -> a42;
+
+  x3 -> a12;
+  x3 -> a22;
+  x3 -> adot;  
+  x3 -> a42;
+
+  a12 -> O1
+  a12 -> O2
+
+
+  a22 -> O1
+  a22 -> O2
+
+  a42 -> O1 
+  a42 -> O2
+
+  {rank=same; O1; O2}
+
+  O1 -> O1_EMPTY
+  O2 -> O2_EMPTY
+
+  {rank=same; O1_EMPTY; O2_EMPTY}
+}
